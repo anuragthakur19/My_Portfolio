@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anurag Kumar Thakur | Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h3 class="logo">My Portfolio</h3>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+  <li><a href="#home" class="nav-link">Home</a></li>
+  <li><a href="#about" class="nav-link">About</a></li>
+  <li><a href="#projects" class="nav-link">Projects</a></li>
+  <li><a href="#contact" class="nav-link">Contact</a></li>
+  <li><a href="Anurag_Kumar_Thakur_CV.pdf" download>Resume</a></li>
+</ul>
+
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container" data-aos="fade-down">
+    <img src="profile.jpeg" alt="Anurag" class="hero-img"/>
+    <h1 class="glow">Anurag Kumar Thakur</h1>
+    <p class="tagline">AI & ML Enthusiast | Frontend Developer | Data Analyst</p>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section interactive-about" id="about" data-aos="fade-up">
+  <h2>About Me</h2>
+  <p>I'm a B.Tech CSE student at <strong>JIS College of Engineering</strong>, passionate about crafting real-world solutions through <strong>Artificial Intelligence</strong>, <strong>image forensics</strong>, and modern <strong>frontend technologies</strong>. I bring strong <strong>communication skills</strong>, <strong>quick thinking</strong>, and a <strong>team-oriented mindset</strong> that thrives in collaborative environments. Whether leading a group project or contributing to hackathons, I enjoy turning ideas into <strong>impactful, user-centric applications</strong>. Always <strong>curious</strong> and driven, I believe in <strong>continuous learning</strong> and meaningful contributions to the tech community.</p>
+  
+</section>
+
+<!-- Education -->
+<section class="section" id="education" data-aos="fade-up">
+  <h2>Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card" style="background-image: url('edu1.jpg');">
+      <div class="edu-overlay">
+        <h3>Secondary</h3>
+        <p>Adarsh Madhyamik Vidyalaya<br>WBBSE<br>74%</p>
+      </div>
+    </div>
+    <div class="edu-card" style="background-image: url('edu2.jpg');">
+      <div class="edu-overlay">
+        <h3>Higher Secondary</h3>
+        <p>WBCHSE<br>75%</p>
+      </div>
+    </div>
+    <div class="edu-card" style="background-image: url('edu3.jpg');">
+      <div class="edu-overlay">
+        <h3>B.Tech CSE</h3>
+        <p>JIS College of Engineering<br>CGPA: 7.5</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack -->
+
+<section class="section" id="skills" data-aos="fade-left">
+  <h2>Tech Stack</h2>
+  <div class="tech-swiper swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><i class="devicon-html5-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-css3-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-javascript-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-python-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-c-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-cplusplus-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-flask-original colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-git-plain colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-github-original colored"></i></div>
+      <div class="swiper-slide"><i class="devicon-vscode-plain colored"></i></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Projects -->
+<section class="section" id="projects" data-aos="fade-up">
+  <h2>My Work</h2>
+  <div class="project-grid">
+    <div class="project-card" style="background-image: url('project1.png');">
+      <div class="overlay"><h3>Violence Detection</h3><p>AI-based violence recognition in video streams.</p><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+    </div>
+    <div class="project-card" style="background-image: url('project2.png');">
+      <div class="overlay"><h3>SightSpector</h3><p>Fake image classifier using deep learning.</p><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+    </div>
+    <div class="project-card" style="background-image: url('project3.png');">
+      <div class="overlay"><h3>Pole Insulation</h3><p>IoT-based safety alert system for poles.</p><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+    </div>
+  </div>
+  <div class="project-grid hidden" id="moreProjects">
+    <div class="project-card" style="background-image: url('project4.png');">
+      <div class="overlay"><h3>Sarcasm Detection</h3><p>Multilingual sarcasm detection model.</p><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+    </div>
+    <div class="project-card" style="background-image: url('project5.png');">
+      <div class="overlay"><h3>Heart Detection</h3><p>Heart disease predictor using ML.</p><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="toggleProjectsBtn" class="btn">Show More</button>
+  </div>
+</section>
+
+<!-- Achievements -->
+<section class="section" id="achievements" data-aos="fade-up">
+  <h2>Achievements</h2>
+  <div class="achievements-grid">
+    <div class="achievement-card">🏆 Most Loved Project – Binary Hackathon (Violence Detection System)</div>
+    <div class="achievement-card">🧠 Active Member – Coding Club, JIS College of Engineering</div>
+    <div class="achievement-card">🎤 Organizer – College Tech & Cultural Events</div>
+    <div class="achievement-card">🧪 Built Deep Learning model for Fake Image Detection (SightSpector)</div>
+    <div class="achievement-card">🛡️ Developed IoT-based Automatic Pole Insulation System</div>
+    <div class="achievement-card">🌐 Completed certifications in Machine Learning, IoT & Web Dev</div>
+  </div>
+</section>
+
+
+
+
+<!-- Certificates -->
+<section class="section" id="certificates" data-aos="fade-up">
+  <h2>Certificates</h2>
+  <div class="cert-grid" id="certificateGrid">
+
+    <!-- Certificate 1 -->
+    <div class="cert-card" style="background-image: url('cert8.png');">
+      <div class="cert-overlay">
+        <h3>Data Analytics and Visualization</h3>
+        <p>Forage Accenture</p>
+        <a href="cert8.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div> 
+
+    <!-- Certificate 2 -->
+    <div class="cert-card" style="background-image: url('cert5.png');">
+      <div class="cert-overlay">
+        <h3>Data Analytics</h3>
+        <p>IBM SkillsBuild</p>
+        <a href="cert5.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Certificate 3 -->
+    <div class="cert-card" style="background-image: url('cert7.png');">
+      <div class="cert-overlay">
+        <h3>Virtual Cloud</h3>
+        <p>AICTE</p>
+        <a href="cert7.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Hidden Certificate 4 -->
+    <div class="cert-card hidden" style="background-image: url('cert9.jpg');">
+      <div class="cert-overlay">
+        <h3>Most Loved Project</h3>
+        <p>Hackathon - Binary</p>
+        <a href="cert9.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Hidden Certificate 5 -->
+    <div class="cert-card hidden" style="background-image: url('cert1.png');">
+      <div class="cert-overlay">
+        <h3>Operating System</h3>
+        <p>Coursera - Google</p>
+        <a href="cert1.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Hidden Certificate 6 -->
+    <div class="cert-card hidden" style="background-image: url('cert2.png');">
+      <div class="cert-overlay">
+        <h3>Data Structures</h3>
+        <p>Coursera - UC San Diego</p>
+        <a href="cert2.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Hidden Certificate 7 -->
+    <div class="cert-card hidden" style="background-image: url('cert3.png');">
+      <div class="cert-overlay">
+        <h3>Full Stack Web Development</h3>
+        <p>Ardent Computech Pvt Ltd.</p>
+        <a href="cert3.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Hidden Certificate 8 -->
+    <div class="cert-card hidden" style="background-image: url('cert4.png');">
+      <div class="cert-overlay">
+        <h3>Internet of Things</h3>
+        <p>Ardent Computech Pvt Ltd.</p>
+        <a href="cert4.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+    <!-- Hidden Certificate 9 -->
+    <div class="cert-card hidden" style="background-image: url('cert6.png');">
+      <div class="cert-overlay">
+        <h3>Pyhton with Django</h3>
+        <p>Euphoria GenX</p>
+        <a href="cert6.pdf" target="_blank" class="btn">View Certificate</a>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+  <!-- Show More Button -->
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="toggleCertificatesBtn" class="btn">Show More</button>
+  </div>
+</section>
+
+
+
+<!-- Social Media -->
+<section class="section" id="social" data-aos="fade-up">
+  <h2>Connect with Me</h2>
+  <div class="social-icons">
+    <a href="https://github.com/anuragthakur19" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/anurag-kumar-thakur/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://leetcode.com/u/Anurag_Kumar_Thakur/" target="_blank"><i class="fas fa-code"></i></a>
+    <a href="https://instagram.com/thakur_sahab_anurag/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://x.com/ThakurAnurag_19" target="_blank"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</section>
+
+
+
+<!-- Contact -->
+<section class="section contact-layout" id="contact" data-aos="fade-up">
+  <h2>Contact Me</h2>
+  <div class="contact-container">
+    <div class="contact-info">
+      <p><i class="fas fa-paper-plane"></i> <a href="mailto:iamanurag0708@gmail.com">iamanurag0708@gmail.com</a></p>
+    </div>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+</section>
+
+<footer><p>© 2025 Anurag Kumar Thakur</p></footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+<!-- Toast Notification -->
+<div id="toast" class="toast">Message sent successfully!</div>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+</body>
+</html>
