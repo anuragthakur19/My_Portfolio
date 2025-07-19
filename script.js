@@ -1,123 +1,226 @@
 // ========== AOS Initialization ==========
 AOS.init({
-  duration: 1000,
-  once: false, // Animate on every scroll
-  mirror: true // Also animate on scroll up
+    duration: 1000,
+    once: false, // Animate on every scroll (for sections like My Journey)
+    mirror: true // Animate on scroll up as well
 });
 
 // ========== Mobile Navbar Toggle ==========
 document.getElementById("hamburger").addEventListener("click", () => {
-  document.getElementById("navLinks").classList.toggle("show");
+    document.getElementById("navLinks").classList.toggle("hidden");
 });
+
+// Close mobile nav when a link is clicked
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        const navLinks = document.getElementById("navLinks");
+        if (!navLinks.classList.contains("hidden") && window.innerWidth <= 768) {
+            navLinks.classList.add("hidden");
+        }
+    });
+});
+
 
 // ========== ScrollSpy for Navbar Highlight ==========
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-link");
 
 function scrollSpy() {
-  let scrollY = window.scrollY;
+    let scrollY = window.scrollY;
 
-  sections.forEach((section) => {
-    const sectionHeight = section.offsetHeight;
-    const sectionTop = section.offsetTop - 80;
-    const sectionId = section.getAttribute("id");
+    sections.forEach((section) => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 80; // Adjust offset for fixed navbar
 
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${sectionId}`) {
-          link.classList.add("active");
+        const sectionId = section.getAttribute("id");
+        const correspondingNavLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+        if (correspondingNavLink) {
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    link.classList.remove("text-accent-cyan");
+                });
+                correspondingNavLink.classList.add("active");
+                correspondingNavLink.classList.add("text-accent-cyan");
+            } else {
+                correspondingNavLink.classList.remove("active");
+                correspondingNavLink.classList.remove("text-accent-cyan");
+            }
         }
-      });
-    }
-  });
+    });
 }
 window.addEventListener("scroll", scrollSpy);
+document.addEventListener("DOMContentLoaded", scrollSpy);
+
 
 // ========== Swiper Tech Stack Carousel ==========
-const swiper = new Swiper(".tech-swiper", {
-  slidesPerView: "auto",
-  spaceBetween: 10,
-  loop: true,
-  speed: 3000,
-  autoplay: {
-    delay: 0,
-    disableOnInteraction: false,
-  },
-  freeMode: true,
-  freeModeMomentum: false,
-  allowTouchMove: false,
-  grabCursor: true,
+const techSwiper = new Swiper(".tech-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 10,
+    loop: true,
+    speed: 3000,
+    autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+    },
+    freeMode: true,
+    freeModeMomentum: false,
+    allowTouchMove: false,
+    grabCursor: false,
+    breakpoints: {
+        600: {
+            slidesPerView: 'auto',
+            spaceBetween: 5
+        }
+    }
 });
 
-// ========== Show More / Show Less Projects ==========
-document.getElementById("toggleProjectsBtn").addEventListener("click", function () {
-  const moreProjects = document.getElementById("moreProjects");
-  const isHidden = moreProjects.classList.contains("hidden");
-
-  if (isHidden) {
-    moreProjects.classList.remove("hidden");
-    this.textContent = "Show Less";
-  } else {
-    moreProjects.classList.add("hidden");
-    this.textContent = "Show More";
-  }
+// ========== Swiper Certificates Carousel ==========
+const certSwiper = new Swiper(".cert-swiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+    },
+    speed: 2000,
+    freeMode: true,
+    freeModeMomentum: false,
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+        },
+        1280: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+        },
+    },
 });
 
-// ========== Show More / Show Less Certificates ==========
-document.getElementById("toggleCertificatesBtn").addEventListener("click", function () {
-  const allCerts = document.querySelectorAll("#certificateGrid .cert-card");
+// ========== Resume Swiper Autoplay on Tab Focus ==========
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        techSwiper.autoplay.start();
+        certSwiper.autoplay.start();
+    } else {
+        techSwiper.autoplay.stop();
+        certSwiper.autoplay.stop();
+    }
+});
 
-  const isExpanded = [...allCerts].filter((card, i) => i >= 3 && !card.classList.contains("hidden")).length > 0;
 
-  if (isExpanded) {
-    allCerts.forEach((card, index) => {
-      if (index >= 3) card.classList.add("hidden");
+// ========== Skill Proficiency Bars Animation ==========
+const proficiencySection = document.getElementById('skills-proficiency');
+if (proficiencySection) {
+    const proficiencyBars = proficiencySection.querySelectorAll('.proficiency-bar');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                proficiencyBars.forEach(bar => {
+                    const proficiency = bar.dataset.proficiency;
+                    bar.style.width = `${proficiency}%`;
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(proficiencySection);
+}
+
+
+// ========== Project Filtering ==========
+const filterButtons = document.querySelectorAll('.filter-btn');
+const allProjectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-accent-cyan', 'text-black');
+            btn.classList.add('bg-box-dark', 'text-text-light');
+        });
+        button.classList.add('active', 'bg-accent-cyan', 'text-black');
+        button.classList.remove('bg-box-dark', 'text-text-light');
+
+        const filter = button.dataset.filter;
+
+        allProjectCards.forEach(card => {
+            const category = card.dataset.category;
+            if (filter === 'all' || category === filter) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
     });
-    this.textContent = "Show More";
-  } else {
-    allCerts.forEach(card => card.classList.remove("hidden"));
-    this.textContent = "Show Less";
-  }
 });
 
 
+// ========== Interactive Contact Bubble ==========
+const contactBubble = document.getElementById('contactBubble');
 
-// ========== Toast on Contact Form Submit ==========
-const contactForm = document.querySelector(".contact-form");
-const toast = document.getElementById("toast");
+if (contactBubble) {
+    contactBubble.addEventListener('click', (event) => {
+        event.stopPropagation();
+        contactBubble.classList.toggle('expanded');
+    });
 
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+    document.addEventListener('click', (event) => {
+        if (!contactBubble.contains(event.target) && contactBubble.classList.contains('expanded')) {
+            contactBubble.classList.remove('expanded');
+        }
+    });
+}
 
-  toast.classList.add("show");
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3000);
 
-  contactForm.reset();
+// ========== Theme Toggle ==========
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+function setTheme(theme) {
+    if (theme === 'light') {
+        document.body.classList.add('light');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        document.body.classList.remove('light');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+    localStorage.setItem('theme', theme);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        setTheme('dark');
+    }
 });
 
-// ========== Certificate Modal View ==========
-const modal = document.getElementById("certModal");
-const modalImg = document.getElementById("certModalImg");
-const closeModal = document.getElementById("certClose");
-
-document.querySelectorAll(".view-cert-btn").forEach(btn => {
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
-    const imgSrc = this.getAttribute("data-img");
-    modalImg.src = imgSrc;
-    modal.style.display = "flex";
-  });
-});
-
-closeModal.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
+themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = document.body.classList.contains('light') ? 'light' : 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
 });
